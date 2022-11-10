@@ -25,10 +25,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
   function getSavedCart() {
     if (localStorage.getItem('cart')) {
       return JSON.parse(localStorage.getItem('cart'));
@@ -36,6 +32,9 @@ function App() {
       return new Map([]);
     }
   }
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   function addToCart(id, amount) {
     if (cart.has(id)) {
